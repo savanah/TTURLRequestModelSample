@@ -1,0 +1,3 @@
+[submodule "Externals/three20"]
+	path = Externals/three20
+	url = https://github.com/savanah/three20.git
