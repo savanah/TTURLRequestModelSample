@@ -31,8 +31,11 @@
                              requestWithURL: urlString
                              delegate: self];
 
-    // request.cachePolicy = cachePolicy | TTURLRequestCachePolicyEtag;
-    request.cacheExpirationAge = TT_DEFAULT_CACHE_INVALIDATION_AGE;
+    // We want to always immediately render from the local cache,
+    // but also make the request to the network,
+    // and if a different answer comes back, update
+    request.cachePolicy = cachePolicy | TTURLRequestCachePolicyReadThrough;
+    request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
 
     TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
     request.response = response;
